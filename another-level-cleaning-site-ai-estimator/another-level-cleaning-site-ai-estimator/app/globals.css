@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0f0f;
+  --fg: #e6fffb;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  scroll-behavior: smooth;
+}
+
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.btn {
+  @apply rounded-2xl px-6 py-3 font-semibold shadow-glow transition active:scale-95;
+}
+.btn-primary {
+  @apply bg-hackerGreen text-black hover:brightness-110;
+}
+.btn-outline {
+  @apply border border-hackerBlue text-hackerBlue hover:bg-hackerBlue hover:text-black;
+}
+.section {
+  @apply py-20;
+}
+.container {
+  @apply max-w-6xl mx-auto px-4;
+}
+.card {
+  @apply glass rounded-2xl p-6;
+}
+h1,h2,h3 { @apply tracking-tight; }
+
+/* Text scrambling animation styles */
+.el-st {
+  color: #eee;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+.el-sp.is-changing {
+  animation: changing 0.1s infinite;
+}
+
+.el-sp {
+  transition: all 0.1s;
+  text-shadow: 0 0 10px #008f11;
+  position: relative;
+  will-change: transform, opacity;
+}
+
+.el-sp:after {
+  content: attr(data-txt);
+  color: #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.el-sp.is-changing:after {
+  animation: changingAfter 0.4s infinite alternate;
+}
+
+.scroll {
+  margin-top: 40px;
+  color: #008f11;
+  display: inline-block;
+  padding-bottom: 3px;
+  padding-right: 40px;
+  position: relative;
+}
+
+.scroll:after {
+  content: '';
+  position: absolute;
+  left: calc(100% - 35px);
+  top: 0;
+  animation: dots 2s infinite;
+}
+
+@keyframes changing {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes changingAfter {
+  0% { opacity: 0.3; transform: translateX(10px) scaleX(2); }
+  50% { opacity: 0; transform: translateX(0) scaleX(2); }
+  100% { opacity: 0.3; transform: translateX(-10px) scaleX(2); }
+}
+
+@keyframes dots {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+}
