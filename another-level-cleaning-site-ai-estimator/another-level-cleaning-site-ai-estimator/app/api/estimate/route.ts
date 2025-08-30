@@ -77,7 +77,7 @@ Keep JSON short. Do not include anything else.`;
       console.log("AI estimation failed, using Smart Estimator fallback");
       
       // Smart Estimator logic based on service type and image count
-      const baseAreaByService = {
+      const baseAreaByService: Record<string, number> = {
         house: 1500,
         windows: 800,
         roof: 1200,
